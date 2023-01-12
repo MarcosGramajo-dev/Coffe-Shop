@@ -52,7 +52,7 @@ form.addEventListener("submit", async (e) => {
 });
 
 function actualizarLista() {
-  fetch(`api`)
+  fetch(`${window.location.href}api`)
     .then((res) => res.json())
     .then((data) => {
       const container = document.getElementById("contenedorArticulo");
