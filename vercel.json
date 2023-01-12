@@ -1,9 +1,15 @@
 {
   "version": 2,
+  "builds": [
+    {
+      "src": "./bin/www",
+      "use": "@now/node"
+    }
+  ],
   "routes": [
     {
-      "src": "/api/(.*)",
-      "dest": "/api"
+      "src": "/(.*)",
+      "dest": "/*"
     }
   ]
 }
