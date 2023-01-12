@@ -91,7 +91,7 @@ articleCtrl.editArticle = async (req, res) => {
         }
 
         res.status(200).json({
-            status: "SUCCES",
+            status: "SUCCESS",
             messege: "Se edito correctaente"
         })
         

@@ -252,7 +252,7 @@ async function metodoDePago(arrayData) {
   });
 
   console.log(JSON.stringify({ arrayMP }));
-  await fetch("http://localhost:8080/payment", {
+  await fetch(`${URLMP}payment`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
