@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seminario III</title>
+    <link rel="stylesheet" href="./stylesheets/style.css">
+</head>
+<body>
+    <header>
+        <h1>COFFE SHOP</h1>
+        <nav>
+            <ul>
+                <li>
+                    <img src="images\addsquare.svg" alt="+" onclick="expandModal('addIteam')" />
+                    
+                </li>
+                <li>
+                    <img src="images\shoppingcart.svg" alt="carrito" onclick="expandModal('carrito')">                    
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <div class="containerModal">
+        <div class="modal">
+            <div id="addItem" style="display: none;">
+                <form id="crearArticulo" class="crearArticulo">
+                    <label for="titulo">Titulo</label>
+                    <input type="text" id="titulo" name="titulo" required>
+                    
+                    <label for="descripcion">Descripcion</label>
+                    <input type="text" id="descripcion" name="descripcion" required>
+        
+                    <label for="cantStock">Cantidad a Agregar</label>
+                    <input type="text" id="cantStock" name="cantStock" required>
+        
+                    <label for="tipoDescuento"> Descuentos:</label>
+                    <div>
+                        <input type="radio" id="ninguno" name="tipoDescuento" value="0" required>
+                        <label class="labelDescuento" for="ninguno">Ninguno</label>
+                        <input type="radio" id="descuento-10" name="tipoDescuento" value="-10%" required>
+                        <label class="labelDescuento" for="descuento-10">-10%</label>
+                        <input type="radio" id="descuento2x1" name="tipoDescuento" value="2x1" required>
+                        <label class="labelDescuento" for="descuento2x1">2x1</label>
+                        <input type="radio" id="descuento3x2" name="tipoDescuento" value="3x2" required>
+                        <label class="labelDescuento" for="descuento3x2">3x2</label>
+                    </div>
+        
+                    <label for="precio">Precio Unitario:</label>
+                    <input type="text" id="precio" name="precio" required>
+        
+                    <div class="file-select" id="src-file1">
+                        <input type="file" id="foto" name="foto" required>
+                    </div>
+        
+                    <button type="submit" id="submit" onclick="expandModal('addIteam')">CREAR ARTICULO</button>
+                </form>
+            </div>
+
+            <div id="carrito" style="display: none;">
+                <table >
+                    <thead>
+                        <tr>
+                            <th>Foto</th>
+                            <th>Producto</th>
+                            <th>Cantidad</th>
+                            <th>Precio</th>
+                            <th>Quitar</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody">
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <!-- <td><button onclick="realizarCompra(event)"> Pedir </button></td> -->
+                        </tr>
+                    </tfoot>
+                </table>
+                <button class="buttonShoppingCart" onclick="openModal()"> CONTINUAR </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="span">
+        <img src="images\Group 16 (1).png" alt="#">
+    </div>
+
+    <!-- <section class="formularioArticulos">
+        <div>
+            <form id="crearArticulo">
+                <label for="titulo">Titulo</label>
+                <input type="text" id="titulo" name="titulo" required>
+                
+                <label for="descripcion">Descripcion</label>
+                <input type="text" id="descripcion" name="descripcion" required>
+    
+                <label for="cantStock">Cantidad a Agregar</label>
+                <input type="text" id="cantStock" name="cantStock" required>
+    
+                <label for="tipoDescuento"> Descuentos:</label>
+                <div>
+                    <label for="ninguno">Ninguno</label>
+                    <input type="radio" id="ninguno" name="tipoDescuento" value="0" required>
+                    <label for="descuento-10">-10%</label>
+                    <input type="radio" id="descuento-10" name="tipoDescuento" value="-10%" required>
+                    <label for="descuento2x1">2x1</label>
+                    <input type="radio" id="descuento2x1" name="tipoDescuento" value="2x1" required>
+                    <label for="descuento3x2">3x2</label>
+                    <input type="radio" id="descuento3x2" name="tipoDescuento" value="3x2" required>
+                </div>
+    
+                <label for="precio">Precio Unitario:</label>
+                <input type="text" id="precio" name="precio" required>
+    
+                <label for="foto">Añadir foto</label>
+                <div class="file-select" id="src-file1">
+                    <input type="file" id="foto" name="foto" required>
+                </div>
+    
+                <button type="submit" id="submit">AÑADIR</button>
+            </form>
+        </div>
+
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Foto</th>
+                        <th>Producto</th>
+                        <th>Cantidad</th>
+                        <th>Descuento</th>
+                        <th>Precio Total</th>
+                        <th>Quitar</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody">
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><button onclick="realizarCompra(event)"> Pedir </button></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </section> -->
+
+    <section class="section">
+        <h2>Lista de articulos</h2>
+        <div id="contenedorArticulo" class="contenedorArticulo">
+        </div>
+    </section>
+
+    <div id="modalConfirmarCompra" class="modalConfirmarCompra" style="display: none;">
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Foto</th>
+                        <th>Producto</th>
+                        <th>Cantidad</th>
+                        <th>Descuento</th>
+                        <th>Precio Total</th>
+                        <th>Quitar</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody2">
+                </tbody>
+            </table>
+            <div class="containerBtnModal">
+                <button onclick="openModal()" class="btnCancel"> CANCELAR </button>
+                <button onclick="realizarCompra(event)" class="btnBuy"> COMPRAR </button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>DISEÑADO Y DESARROLLADO POR MARCOS GRAMAJO PARA CONACTARME PUEDE DIRIGIRSE AL MI <a href="https://marcosgramajo.netlify.app/">PORTFOLIO</a></p>
+    </footer>
+
+<script src="./javascripts/api.js"></script>
+<script src="./javascripts/modal.js"></script>
+</body>
+</html>
