@@ -40,9 +40,9 @@ form.addEventListener("submit", async (e) => {
       formData.append(key, element);
     }
   }
-
+  
   formData.append("foto", foto);
-  const response = await fetch(process.env.URL + "api", {
+  const response = await fetch(`api`, {
     method: "POST",
     body: formData,
   });
@@ -52,7 +52,7 @@ form.addEventListener("submit", async (e) => {
 });
 
 function actualizarLista() {
-  fetch(process.env.URL + "api")
+  fetch(`api`)
     .then((res) => res.json())
     .then((data) => {
       const container = document.getElementById("contenedorArticulo");
@@ -95,7 +95,7 @@ async function eliminarArticulo(e) {
   console.log(e);
   const tarjetaID = e.id;
 
-  await fetch(process.env.URL + "api/" + tarjetaID, {
+  await fetch(`api/${tarjetaID}`, {
     method: "DELETE",
   })
     .then((res) => res.json())
@@ -206,7 +206,7 @@ function limpiarCarrito() {
 
 async function realizarCompra() {
   let stockToF = true;
-  await fetch(process.env.URL + "api")
+  await fetch(`api`)
     .then((res) => res.json())
     .then((data) => {
       console.log(data);
@@ -273,7 +273,7 @@ function reducirStock() {
     return;
   } else if (params.status === "approved") {
     arrayCarrito = JSON.parse(localStorage.getItem("cart"));
-    fetch(process.env.URL + "api")
+    fetch(`api`)
       .then((res) => res.json())
       .then((data) => {
         console.log("data", data);
@@ -289,7 +289,7 @@ function reducirStock() {
               if (producto.cantStock - item.cantCompra >= 0) {
                 resultado = producto.cantStock - item.cantCompra;
                 console.log("fetch");
-                fetch(process.env.URL + "api/" + item.id, {
+                fetch(`api/${item.id}`, {
                   method: "PUT",
                   headers: {
                     "Content-Type": "application/json",
