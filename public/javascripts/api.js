@@ -42,7 +42,7 @@ form.addEventListener("submit", async (e) => {
   }
   
   formData.append("foto", foto);
-  const response = await fetch(`api`, {
+  const response = await fetch(`${window.location.href}api`, {
     method: "POST",
     body: formData,
   });
@@ -52,7 +52,7 @@ form.addEventListener("submit", async (e) => {
 });
 
 function actualizarLista() {
-  fetch(`api`)
+  fetch(`${window.location.href}api`)
     .then((res) => res.json())
     .then((data) => {
       const container = document.getElementById("contenedorArticulo");
