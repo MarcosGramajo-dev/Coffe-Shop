@@ -252,7 +252,7 @@ async function metodoDePago(arrayData) {
   });
 
   console.log(JSON.stringify({ arrayMP }));
-  await fetch(`${URLMP}payment`, {
+  await fetch(`https://servicepayment.up.railway.app/payment`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
